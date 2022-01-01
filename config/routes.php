@@ -45,34 +45,21 @@ return static function (RouteBuilder $routes) {
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->scope('/', function (RouteBuilder $builder) {
-        /*
-         * Here, we are connecting '/' (base path) to a controller called 'Pages',
-         * its action called 'display', and we pass a param to select the view file
-         * to use (in this case, templates/Pages/home.php)...
-         */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-
-        /*
-         * ...and connect the rest of 'Pages' controller's URLs.
-         */
-        $builder->connect('/pages/*', 'Pages::display');
-
-        /*
-         * Connect catchall routes for all controllers.
-         *
-         * The `fallbacks` method is a shortcut for
-         *
-         * ```
-         * $builder->connect('/:controller', ['action' => 'index']);
-         * $builder->connect('/:controller/:action/*', []);
-         * ```
-         *
-         * You can remove these routes once you've connected the
-         * routes you want in your application.
-         */
+        $builder->redirect("/",  ['controller' => 'Auth', 'action' => 'login', 'login']);
+        $builder->connect('/auth/login', ['controller' => 'Auth', 'action' => 'login', 'login']);
+        $builder->connect('/auth/logout', ['controller' => 'Auth', 'action' => 'logout', 'login']);
         $builder->fallbacks();
     });
 
+    $routes->prefix('Painel',['_namePrefix' => 'painel:'], function (RouteBuilder $builder) {
+        $builder->redirect("/",  ['controller' => 'Users', 'action' => 'index', 'prefix' => 'Painel']);
+        $builder->connect('/users', ['controller' => 'Users', 'action' => 'index', 'prefix' => 'Painel']);
+        $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'Painel']);
+        $builder->connect('/users/:id', ['controller' => 'Users', 'action' => 'view', 'prefix' => 'Painel'], ['pass' => ['id']]);
+        $builder->connect('/users/edit/:id', ['controller' => 'Users', 'action' => 'edit', 'prefix' => 'Painel', 'add'], ['pass' => ['id']]);
+        $builder->connect('/users/delete/:id', ['controller' => 'Users', 'action' => 'delete', 'prefix' => 'Painel', 'add'],  ['pass' => ['id']]);
+        $builder->fallbacks(DashedRoute::class);
+    });
     /*
      * If you need a different set of middleware or none at all,
      * open new scope and define routes there.
