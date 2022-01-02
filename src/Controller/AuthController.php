@@ -23,6 +23,7 @@ class AuthController extends AppController
      */
     public function login()
     {
+        $this->viewBuilder()->setLayout('auth');
         $result = $this->Authentication->getResult();
         // If the user is logged in send them away.
         if ($result->isValid()) {

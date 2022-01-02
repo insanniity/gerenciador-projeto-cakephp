@@ -5,26 +5,31 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Add User') ?></legend>
-                <?php
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('status');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+    <div class="col-12">
+        <div class="card my-4">
+            <div class="card-body p-5">
+                <?= $this->Form->create($user) ?>
+                <legend><?= __('Adicionar usuário') ?></legend>
+                <div class="input-group input-group-outline my-3">
+                    <label class="form-label">Nome</label>
+                    <?= $this->Form->input('name', ['class' => 'form-control', 'type' => 'text']); ?>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                    <label class="form-label">Email</label>
+                    <?= $this->Form->input('email', ['class' => 'form-control', 'type' => 'email']); ?>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                    <label class="form-label">Senha</label>
+                    <?= $this->Form->input('password', ['class' => 'form-control', 'type' => 'password']); ?>
+                </div>
+                <select class="form-select mb-3 px-3 form-select-input" aria-label="Default select example" name="status">
+                    <option selected>Selecione o status</option>
+                    <option value="1">Ativo</option>
+                    <option value="0">Desativado</option>
+                </select>
+                <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?>
+                <?= $this->Form->end() ?>
+            </div>
         </div>
     </div>
 </div>
