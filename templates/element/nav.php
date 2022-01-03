@@ -15,11 +15,19 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white <?= ($this->request->getParam('controller') == 'Users') ? 'active' : '' ?>  bg-gradient-primary" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index', 'prefix'=> 'Painel']) ?>">
+                <a class="nav-link text-white <?= ($this->request->getParam('controller') == 'Users') ? 'active bg-gradient-primary' : '' ?>  " href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index', 'prefix'=> 'Painel']) ?>">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">manage_accounts</i>
                     </div>
                     <span class="nav-link-text ms-1">Usuários</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white <?= ($this->request->getParam('controller') == 'Leads') ? 'active  bg-gradient-primary' : '' ?> " href="<?= $this->Url->build(['controller' => 'Leads', 'action' => 'index', 'prefix'=> 'Painel']) ?>">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person_search</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Leads</span>
                 </a>
             </li>
         </ul>

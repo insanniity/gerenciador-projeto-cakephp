@@ -10,7 +10,7 @@
         <div class="card my-4">
             <div class="card-body p-5">
                 <?= $this->Form->create($user) ?>
-                <legend><?= __('Adicionar usuário') ?></legend>
+                <legend><?= __('Editar usuário') ?></legend>
                 <div class="input-group input-group-outline is-filled my-3">
                     <label class="form-label">Nome</label>
                     <?= $this->Form->input('name', ['class' => 'form-control', 'type' => 'text']); ?>
