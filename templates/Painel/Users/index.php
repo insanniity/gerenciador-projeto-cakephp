@@ -14,13 +14,13 @@
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
-                        <tr>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('id') ?></th>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('name') ?></th>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('email') ?></th>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('status') ?></th>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('created') ?></th>
-                            <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"><?= $this->Paginator->sort('modified') ?></th>
+                        <tr class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">
+                            <th><?= $this->Paginator->sort('id') ?></th>
+                            <th><?= $this->Paginator->sort('name', 'Nome') ?></th>
+                            <th><?= $this->Paginator->sort('email') ?></th>
+                            <th><?= $this->Paginator->sort('status') ?></th>
+                            <th><?= $this->Paginator->sort('created') ?></th>
+                            <th><?= $this->Paginator->sort('modified') ?></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -28,19 +28,13 @@
                         <?php foreach ($users as $user): ?>
                             <tr>
                                 <td class="px-4">
-                                      <span class="text-secondary text-xs font-weight-bold">
-                                        <?= $this->Number->format($user->id) ?>
-                                    </span>
+                                    <?= $this->Number->format($user->id) ?>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-xs font-weight-bold">
-                                        <?= h($user->name) ?>
-                                    </span>
+                                    <?= h($user->name) ?>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-xs font-weight-bold">
-                                        <?= h($user->email) ?>
-                                    </span>
+                                    <?= h($user->email) ?>
                                 </td>
                                 <td>
                                     <?php if ($user->status): ?>
@@ -50,14 +44,10 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-xs font-weight-bold">
-                                        <?= $this->Time->format(h($user->created), 'dd/MM/Y') ?>
-                                    </span>
+                                    <?= $this->Time->format(h($user->created), 'dd/MM/Y') ?>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-xs font-weight-bold">
-                                        <?= $this->Time->format(h($user->modified), 'dd/MM/Y') ?>
-                                    </span>
+                                    <?= $this->Time->format(h($user->modified), 'dd/MM/Y') ?>
                                 </td>
                                 <td class="d-flex">
                                     <?= $this->Html->link(__('<i class="material-icons text-lg">visibility</i>'), ['action' => 'view', $user->id], ['class' => 'btn btn-icon-only btn-rounded btn-outline-success me-1 p-3 btn-sm d-flex align-items-center justify-content-center', 'escape' => false]) ?>
